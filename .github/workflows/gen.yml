@@ -1,0 +1,28 @@
+name: generate bullshit
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: "0 9 * * *"
+
+jobs:
+  autogreen:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: install
+        run: npm install
+
+      - name: Generate
+        run: |
+          git config --local user.email "justhelp.developer@gmailc.om"
+          git config --local user.name "retry0"
+          git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB }}@github.com/${{ github.repository }}
+          git pull --rebase
+          node index.js
+          git commit -am "new bullshit comes"
+          git push

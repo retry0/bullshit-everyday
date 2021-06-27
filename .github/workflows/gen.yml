@@ -19,7 +19,7 @@ jobs:
 
       - name: Generate
         run: |
-          git config --local user.email "justhelp.developer@gmailc.om"
+          git config --local user.email "linggaadi4nd@gmail.com"
           git config --local user.name "retry0"
           git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB }}@github.com/${{ github.repository }}
           git pull --rebase
